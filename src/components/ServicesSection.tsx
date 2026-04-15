@@ -1,5 +1,5 @@
+import React, { memo, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
 import { Baby, Activity, Syringe, Stethoscope, HeartPulse, Brain } from "lucide-react";
 
 const services = [
@@ -11,24 +11,29 @@ const services = [
   { icon: Brain, title: "Developmental Assessment", desc: "Thorough evaluation of behavioral, speech, and learning milestones with expert recommendations." },
 ];
 
-function ServiceCard({ service, index }: { service: typeof services[0]; index: number }) {
+const ServiceCard = memo(({ service, index }: { service: typeof services[0]; index: number }) => {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (window.innerWidth < 768) return;
+    
     const rect = e.currentTarget.getBoundingClientRect();
-    const x = (e.clientX - rect.left - rect.width / 2) / 20;
-    const y = (e.clientY - rect.top - rect.height / 2) / 20;
+    const x = (e.clientX - rect.left - rect.width / 2) / 25;
+    const y = (e.clientY - rect.top - rect.height / 2) / 25;
     setTilt({ x: -y, y: x });
   };
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 40 }}
+      initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      className="glass-card p-6 md:p-8 cursor-pointer group hover:shadow-elevated transition-all duration-500"
-      style={{ transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)` }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.05 }}
+      style={{ 
+        transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+        willChange: "transform, opacity"
+      }}
+      className="glass-card p-6 md:p-8 cursor-pointer group hover:shadow-elevated transition-all duration-300"
       onMouseMove={handleMouseMove}
       onMouseLeave={() => setTilt({ x: 0, y: 0 })}
     >

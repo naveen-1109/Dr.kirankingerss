@@ -1,5 +1,5 @@
+import React, { useState, useEffect, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
 import { Star, ChevronLeft, ChevronRight } from "lucide-react";
 
 const testimonials = [
@@ -29,7 +29,7 @@ const testimonials = [
   },
 ];
 
-const TestimonialsSection = () => {
+const TestimonialsSection = memo(() => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
@@ -106,6 +106,6 @@ const TestimonialsSection = () => {
       </div>
     </section>
   );
-};
+});
 
 export default TestimonialsSection;

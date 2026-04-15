@@ -82,7 +82,11 @@ function FloatingOrb({ position, color, size = 0.15 }: { position: [number, numb
 const DNAHelix = () => {
   return (
     <div className="w-full h-full">
-      <Canvas camera={{ position: [0, 0, 10], fov: 45 }} gl={{ alpha: true, antialias: true }}>
+      <Canvas 
+        camera={{ position: [0, 0, 10], fov: 45 }} 
+        gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
+        dpr={[1, 2]} // Limit pixel ratio on high-dpi mobile
+      >
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
         <pointLight position={[-5, -5, 5]} intensity={0.5} color="#2dd4bf" />
@@ -91,8 +95,6 @@ const DNAHelix = () => {
         </Float>
         <FloatingOrb position={[3, 2, -2]} color="#0ea5e9" size={0.2} />
         <FloatingOrb position={[-3, -2, -1]} color="#2dd4bf" size={0.15} />
-        <FloatingOrb position={[2, -3, -3]} color="#0ea5e9" size={0.1} />
-        <FloatingOrb position={[-2, 3, -2]} color="#2dd4bf" size={0.12} />
         <Environment preset="city" />
       </Canvas>
     </div>
