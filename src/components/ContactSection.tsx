@@ -25,24 +25,56 @@ const ContactSection = () => {
         </motion.div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-12">
-          {contactInfo.map((item, i) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card p-6 text-center shadow-elevated"
-            >
-              <div className="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center mx-auto mb-4">
-                <item.icon className="w-6 h-6 text-primary-foreground" />
-              </div>
-              <h3 className="font-bold text-foreground mb-2">{item.title}</h3>
-              {item.lines.map((line) => (
-                <p key={line} className="text-sm text-muted-foreground">{line}</p>
-              ))}
-            </motion.div>
-          ))}
+          {contactInfo.map((item, i) => {
+            const isWhatsApp = item.title === "WhatsApp";
+            const isPhone = item.title === "Call Us";
+            
+            return (
+              <motion.div
+                key={item.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.1 }}
+                className="glass-card p-6 text-center shadow-elevated group relative"
+              >
+                <div className="w-14 h-14 rounded-2xl gradient-bg flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                  <item.icon className="w-6 h-6 text-primary-foreground" />
+                </div>
+                <h3 className="font-bold text-foreground mb-2">{item.title}</h3>
+                {item.lines.map((line) => {
+                  if (isWhatsApp) {
+                    return (
+                      <a 
+                        key={line} 
+                        href="https://wa.me/919880677666?text=Hello%20Doctor%2C%20I%20would%20like%20to%20consult"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        title="Click to chat with Dr. Kiran Kinger on WhatsApp"
+                        className="text-sm text-primary hover:underline block cursor-pointer transition-all"
+                      >
+                        {line}
+                      </a>
+                    );
+                  }
+                  if (isPhone) {
+                    const phoneNum = line.split(": ")[1]?.replace(/\s/g, '');
+                    return (
+                      <a 
+                        key={line} 
+                        href={`tel:${phoneNum}`}
+                        title={`Click to call ${line.split(":")[0]}`}
+                        className="text-sm text-muted-foreground hover:text-primary block transition-all"
+                      >
+                        {line}
+                      </a>
+                    );
+                  }
+                  return <p key={line} className="text-sm text-muted-foreground">{line}</p>;
+                })}
+              </motion.div>
+            );
+          })}
         </div>
 
         {/* Map - Bangalore Spencer Road */}
@@ -64,15 +96,6 @@ const ContactSection = () => {
         </motion.div>
       </div>
 
-      {/* Floating WhatsApp button */}
-      <a
-        href="https://wa.me/919880677666"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-8 right-8 z-50 w-14 h-14 rounded-full gradient-bg flex items-center justify-center shadow-glow hover:scale-110 transition-transform duration-300"
-      >
-        <MessageCircle className="w-6 h-6 text-primary-foreground" />
-      </a>
     </section>
   );
 };

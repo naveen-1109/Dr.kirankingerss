@@ -53,26 +53,29 @@ const TrustSection = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8 }}
             className="lg:-translate-x-8"
+            style={{ willChange: "transform, opacity" }}
           >
             <div className="relative w-max mx-auto">
-              <div className="w-72 md:w-80 rounded-3xl overflow-hidden shadow-elevated border-4 border-card">
+              <div className="w-64 sm:w-72 md:w-80 rounded-3xl overflow-hidden shadow-elevated border-4 border-card">
                 <img
                   src={doctorPhoto}
                   alt="Dr. Kiran Kinger - Consultant Pediatrician"
-                  className="w-full h-auto block -mb-12 origin-top"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto block origin-top"
                 />
               </div>
-              <div className="absolute -bottom-4 -right-4 glass-card p-4 shadow-glow">
-                <p className="text-sm font-semibold text-foreground">⭐ 30+ Years Experience</p>
+              <div className="absolute -bottom-4 -right-2 sm:-right-4 glass-card p-3 sm:p-4 shadow-glow">
+                <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">⭐ 30+ Years Experience</p>
               </div>
-              <div className="absolute -top-4 -left-4 glass-card p-3 shadow-glow">
-                <p className="text-xs font-semibold text-foreground flex items-center gap-1">
+              <div className="absolute -top-4 -left-2 sm:-left-4 glass-card p-2 sm:p-3 shadow-glow">
+                <p className="text-[10px] sm:text-xs font-semibold text-foreground flex items-center gap-1 whitespace-nowrap">
                   <IndianRupee className="w-3 h-3" /> Consultation: ₹700
                 </p>
               </div>
             </div>
             {/* Mobile visible logo perfectly stacked between them before about section */}
-            <div className="md:hidden mt-12 z-20 w-full flex justify-center pb-4">
+            <div className="md:hidden mt-10 z-20 w-full flex justify-center pb-2">
               <FamilyLogo />
             </div>
           </motion.div>
@@ -83,7 +86,7 @@ const TrustSection = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="flex flex-col items-center md:items-start text-center md:text-left lg:translate-x-6"
+            className="flex flex-col items-center md:items-start text-center md:text-left lg:translate-x-6 mt-12 md:mt-0"
           >
             <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">About the Doctor</p>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 md:mb-6 leading-tight">

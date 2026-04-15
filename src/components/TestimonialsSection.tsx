@@ -22,10 +22,10 @@ const testimonials = [
     relation: "Mother",
   },
   {
-    name: "Suresh Patel",
+    name: "Nazia Parveen",
     text: "Dr. Kinger's 33+ years of experience shows in every consultation. He identified an issue other doctors missed and provided the right treatment immediately.",
     rating: 5,
-    relation: "Father",
+    relation: "Mother",
   },
 ];
 

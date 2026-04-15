@@ -8,7 +8,7 @@ const teenagerUrl = "https://res.cloudinary.com/dtu6v3jya/image/upload/v17761746
 
 const HeroSection = () => {
   return (
-    <section className="relative min-h-screen hero-gradient overflow-hidden flex items-center">
+    <section className="relative min-h-screen hero-gradient overflow-hidden flex items-start md:items-center">
       {/* Gradient blobs */}
       <div className="absolute top-20 left-10 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
       <div className="absolute bottom-20 right-10 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
@@ -40,15 +40,15 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Content */}
-      <div className="relative z-10 container mx-auto px-6 pt-28 pb-20">
+      <div className="relative z-10 container mx-auto px-6 pt-60 sm:pt-28 pb-20">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Left - Text */}
-          <div className="flex flex-col items-center md:items-start text-center md:text-left">
+          <div className="flex flex-col items-center md:items-start text-center md:text-left pt-20 sm:pt-0">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
-              className="inline-flex items-center gap-2 glass-card px-4 py-2 mb-6"
+              className="inline-flex items-center gap-2 glass-card px-4 py-2 mb-8"
             >
               <Shield className="w-4 h-4 text-primary" />
               <span className="text-sm font-medium text-muted-foreground">30+ Years of Trusted Child & Family Care</span>
@@ -81,9 +81,10 @@ const HeroSection = () => {
             >
 
               <a
-                href="https://wa.me/919880677666"
+                href="https://wa.me/919880677666?text=Hello%20Doctor%2C%20I%20would%20like%20to%20consult"
                 target="_blank"
                 rel="noopener noreferrer"
+                title="Chat with Dr. Kiran on WhatsApp for consultation"
                 className="glass-card px-8 py-4 rounded-full font-semibold text-foreground hover:shadow-elevated transition-all duration-300 flex items-center gap-2"
               >
                 <MessageCircle className="w-5 h-5 text-primary" />
@@ -93,17 +94,18 @@ const HeroSection = () => {
           </div>
 
           {/* Right - Child images asymmetric layout */}
-          <div className="relative h-[420px] md:h-[520px] hidden md:block">
+          <div className="relative h-[480px] md:h-[550px] hidden md:block">
             {/* Gradient blobs behind images */}
             <div className="absolute top-10 left-10 w-64 h-64 bg-primary/15 rounded-full blur-3xl" />
             <div className="absolute bottom-10 right-10 w-48 h-48 bg-accent/15 rounded-full blur-3xl" />
 
-            {/* Main large image */}
+            {/* Main large image - Child Portrait */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, delay: 0.3 }}
-              className="absolute top-4 left-1/2 -translate-x-1/2 z-0"
+              className="absolute top-0 left-0 z-0"
+              style={{ willChange: "transform, opacity" }}
             >
               <motion.div
                 animate={{ y: [-6, 6, -6] }}
@@ -116,17 +118,20 @@ const HeroSection = () => {
                   alt="Cheerful child alone"
                   width={800}
                   height={1024}
-                  className="relative w-56 h-72 md:w-64 md:h-80 object-cover rounded-3xl shadow-elevated group-hover:scale-[1.02] transition-transform duration-500 bg-white"
+                  decoding="async"
+                  loading="eager"
+                  className="relative w-56 h-72 md:w-64 md:h-80 lg:w-72 lg:h-[400px] object-cover rounded-3xl shadow-elevated group-hover:scale-[1.02] transition-transform duration-500 bg-white"
                 />
               </motion.div>
             </motion.div>
 
-            {/* Smaller image - bottom right */}
+            {/* Smaller image - bottom middle (Baby) */}
             <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, y: 40 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="absolute bottom-12 right-0 z-10"
+              className="absolute -bottom-4 md:bottom-2 left-[20%] md:left-[25%] lg:left-[30%] z-20"
+              style={{ willChange: "transform, opacity" }}
             >
               <motion.div
                 animate={{ y: [-8, 8, -8] }}
@@ -140,20 +145,22 @@ const HeroSection = () => {
                   width={640}
                   height={640}
                   loading="lazy"
-                  className="relative w-40 h-40 md:w-48 md:h-48 object-cover rounded-2xl shadow-elevated group-hover:scale-[1.03] transition-transform duration-500 bg-white"
+                  decoding="async"
+                  className="relative w-36 h-36 md:w-44 md:h-44 lg:w-52 lg:h-52 object-cover rounded-2xl shadow-elevated group-hover:scale-[1.03] transition-transform duration-500 bg-white"
                 />
               </motion.div>
             </motion.div>
 
-            {/* Smaller image - top right (Teenager) */}
+            {/* Smaller image - middle right (Family/Teenager) */}
             <motion.div
               initial={{ opacity: 0, x: 40 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="absolute top-12 right-0 z-10 hidden lg:block"
+              className="absolute top-[20%] right-0 md:right-4 lg:right-10 z-10"
+              style={{ willChange: "transform, opacity" }}
             >
               <motion.div
-                animate={{ y: [-5, 5, -5] }}
+                animate={{ x: [-5, 5, -5] }}
                 transition={{ duration: 6.5, repeat: Infinity, ease: "easeInOut" }}
                 className="relative group"
               >
@@ -164,7 +171,8 @@ const HeroSection = () => {
                   width={640}
                   height={640}
                   loading="lazy"
-                  className="relative w-32 h-32 md:w-40 md:h-40 object-cover object-top rounded-2xl shadow-elevated group-hover:scale-[1.03] transition-transform duration-500 bg-white"
+                  decoding="async"
+                  className="relative w-40 h-40 md:w-48 md:h-48 lg:w-56 lg:h-56 object-cover object-top rounded-2xl shadow-elevated group-hover:scale-[1.03] transition-transform duration-500 bg-white"
                 />
               </motion.div>
             </motion.div>
@@ -174,13 +182,14 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.9 }}
-              className="absolute top-2 right-0 z-30"
+              className="absolute -top-4 left-[40%] md:left-[45%] lg:left-[50%] z-30"
+              style={{ willChange: "transform, opacity" }}
             >
               <motion.div
                 animate={{ y: [-4, 4, -4] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
               >
-                <div className="glass-card p-4 shadow-glow">
+                <div className="glass-card p-3 sm:p-4 shadow-glow">
                   <p className="text-sm font-bold text-foreground">100K+</p>
                   <p className="text-xs text-muted-foreground">Children Treated</p>
                 </div>
@@ -192,13 +201,15 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.0 }}
-              className="absolute -bottom-2 left-1/2 -translate-x-1/2 z-30"
+              className="absolute -bottom-8 left-0 z-30 w-max"
+              style={{ willChange: "transform, opacity" }}
             >
-              <div className="glass-card px-5 py-3 shadow-glow">
-                <p className="text-xs font-semibold text-foreground">⭐ Trusted by Thousands of Parents</p>
+              <div className="glass-card px-4 sm:px-5 py-2 sm:py-3 shadow-glow">
+                <p className="text-xs font-semibold text-foreground whitespace-nowrap">⭐ Trusted by Thousands of Parents</p>
               </div>
             </motion.div>
           </div>
+
 
           {/* Mobile images horizontally stacked but wrapping to prevent overflow */}
           <div className="md:hidden flex flex-wrap justify-center gap-4 py-4 w-full">
