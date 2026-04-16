@@ -1,11 +1,11 @@
 import React, { memo } from "react";
 import { motion } from "framer-motion";
-import { Cpu, HeartHandshake, Video, ShieldCheck } from "lucide-react";
+import { Syringe, HeartHandshake, Video, ShieldCheck } from "lucide-react";
 
 const highlights = [
-  { icon: Cpu, title: "Advanced Technology", desc: "State-of-the-art medical equipment and AI-powered diagnostics for precise treatment." },
+  { icon: Syringe, title: "Vaccinations for All Ages", desc: "Our clinic provides a comprehensive range of vaccinations and immunizations for infants, children, and adults." },
   { icon: HeartHandshake, title: "Personalized Care", desc: "Every treatment plan is uniquely tailored to your individual health needs." },
-  { icon: Video, title: "Teleconsultation & Continuous Support", desc: "Get expert care via secure video consultations with continuous support." },
+  { icon: Video, title: "WhatsApp Consultation by Appointment & Availability", desc: "Book an appointment and consult directly through WhatsApp with continuous support." },
   { icon: ShieldCheck, title: "Proven Results", desc: "99% patient satisfaction rate with thousands of successful treatments." },
 ];
 
@@ -22,7 +22,7 @@ const WhyChooseUs = () => {
         >
           <p className="text-primary font-semibold text-sm uppercase tracking-wider mb-3">Why Choose Us</p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-foreground mb-4">
-            The <span className="gradient-text">MediCare+</span> Difference
+            The <span className="gradient-text">Dr. Kiran Kinger</span> Difference
           </h2>
         </motion.div>
 

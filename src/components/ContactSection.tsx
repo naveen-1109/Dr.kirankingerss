@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, MessageCircle } from "lucide-react";
+import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import WhatsAppIcon from "./ui/WhatsAppIcon";
 
 const contactInfo = [
-  { icon: MapPin, title: "Visit Us", lines: ["Dr. Kinger's Clinic", "Bangalore"] },
+  { icon: Mail, title: "Email Us", lines: ["drkingersclinic@gmail.com"] },
   { icon: Phone, title: "Call Us", lines: ["Doctor: +91 9880677666", "Reception: +91 9042250649"] },
-  { icon: MessageCircle, title: "WhatsApp", lines: ["+91 9880677666"] },
-  { icon: Clock, title: "Working Hours", lines: ["Mon-Sat: 11:00 AM - 7:00 PM", "Sun: By Appointment"] },
+  { icon: WhatsAppIcon, title: "WhatsApp", lines: ["+91 9880677666"] },
+  { icon: Clock, title: "Working Hours", lines: ["Mon-Sat: 11:00 AM - 7:00 PM", "Sun: Holiday"] },
 ];
 
 const ContactSection = () => {
@@ -28,7 +29,8 @@ const ContactSection = () => {
           {contactInfo.map((item, i) => {
             const isWhatsApp = item.title === "WhatsApp";
             const isPhone = item.title === "Call Us";
-            
+            const isMail = item.title === "Email Us";
+
             return (
               <motion.div
                 key={item.title}
@@ -45,13 +47,13 @@ const ContactSection = () => {
                 {item.lines.map((line) => {
                   if (isWhatsApp) {
                     return (
-                      <a 
-                        key={line} 
+                      <a
+                        key={line}
                         href="https://wa.me/919880677666?text=Hello%20Doctor%2C%20I%20would%20like%20to%20consult"
                         target="_blank"
                         rel="noopener noreferrer"
                         title="Click to chat with Dr. Kiran Kinger on WhatsApp"
-                        className="text-sm text-primary hover:underline block cursor-pointer transition-all"
+                        className="text-sm text-foreground hover:text-primary hover:underline block cursor-pointer transition-all"
                       >
                         {line}
                       </a>
@@ -60,10 +62,22 @@ const ContactSection = () => {
                   if (isPhone) {
                     const phoneNum = line.split(": ")[1]?.replace(/\s/g, '');
                     return (
-                      <a 
-                        key={line} 
+                      <a
+                        key={line}
                         href={`tel:${phoneNum}`}
                         title={`Click to call ${line.split(":")[0]}`}
+                        className="text-sm text-muted-foreground hover:text-primary block transition-all"
+                      >
+                        {line}
+                      </a>
+                    );
+                  }
+                  if (isMail) {
+                    return (
+                      <a
+                        key={line}
+                        href={`mailto:${line}`}
+                        title="Click to send an email"
                         className="text-sm text-muted-foreground hover:text-primary block transition-all"
                       >
                         {line}

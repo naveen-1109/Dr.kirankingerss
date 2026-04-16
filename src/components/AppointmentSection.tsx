@@ -29,7 +29,7 @@ const AppointmentSection = () => {
             Book Your <span className="gradient-text">Visit</span>
           </h2>
           <p className="text-muted-foreground max-w-xl mx-auto">
-            Schedule a consultation with Dr. Kiran Kinger. Consultation fee: ₹500.
+            Schedule a consultation with Dr. Kiran Kinger.
           </p>
         </motion.div>
 

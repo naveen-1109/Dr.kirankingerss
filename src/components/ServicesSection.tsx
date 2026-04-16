@@ -44,7 +44,7 @@ const ServiceCard = memo(({ service, index }: { service: typeof services[0]; ind
       <p className="text-muted-foreground leading-relaxed text-sm">{service.desc}</p>
     </motion.div>
   );
-}
+});
 
 const ServicesSection = () => {
   const ref = useRef(null);

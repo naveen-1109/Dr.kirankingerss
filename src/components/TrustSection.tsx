@@ -68,11 +68,7 @@ const TrustSection = () => {
               <div className="absolute -bottom-4 -right-2 sm:-right-4 glass-card p-3 sm:p-4 shadow-glow">
                 <p className="text-[10px] sm:text-xs md:text-sm font-semibold text-foreground whitespace-nowrap">⭐ 30+ Years Experience</p>
               </div>
-              <div className="absolute -top-4 -left-2 sm:-left-4 glass-card p-2 sm:p-3 shadow-glow">
-                <p className="text-[10px] sm:text-xs font-semibold text-foreground flex items-center gap-1 whitespace-nowrap">
-                  <IndianRupee className="w-3 h-3" /> Consultation: ₹700
-                </p>
-              </div>
+
             </div>
             {/* Mobile visible logo perfectly stacked between them before about section */}
             <div className="md:hidden mt-10 z-20 w-full flex justify-center pb-2">

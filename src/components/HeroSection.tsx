@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Calendar, MessageCircle, Shield, Heart, Stethoscope } from "lucide-react";
+import { Calendar, Shield, Heart, Stethoscope } from "lucide-react";
+import WhatsAppIcon from "./ui/WhatsAppIcon";
 import babyAlone from "@/assets/baby_alone.png";
 import childAlone from "@/assets/child_alone.png";
 import DNAHelix from "./DNAHelix";
@@ -85,9 +86,9 @@ const HeroSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Chat with Dr. Kiran on WhatsApp for consultation"
-                className="glass-card px-8 py-4 rounded-full font-semibold text-foreground hover:shadow-elevated transition-all duration-300 flex items-center gap-2"
+                className="glass-card px-8 py-4 rounded-full font-semibold text-foreground hover:shadow-elevated transition-all duration-300 flex items-center gap-4 group"
               >
-                <MessageCircle className="w-5 h-5 text-primary" />
+                <WhatsAppIcon className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
                 Contact on WhatsApp
               </a>
             </motion.div>

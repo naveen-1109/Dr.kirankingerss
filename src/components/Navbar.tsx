@@ -24,6 +24,25 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace("#", "");
+    const element = document.getElementById(targetId);
+    if (element) {
+      const offset = 80; // Header height
+      const bodyRect = document.body.getBoundingClientRect().top;
+      const elementRect = element.getBoundingClientRect().top;
+      const elementPosition = elementRect - bodyRect;
+      const offsetPosition = elementPosition - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+      setMobileOpen(false);
+    }
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -34,7 +53,7 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a href="#" className="flex items-center gap-2">
+        <a href="#" className="flex items-center gap-2" onClick={(e) => { e.preventDefault(); window.scrollTo({ top: 0, behavior: "smooth" }); }}>
           <div className="w-10 h-10 rounded-xl gradient-bg flex items-center justify-center">
             <span className="text-primary-foreground font-bold text-lg">K</span>
           </div>
@@ -46,6 +65,7 @@ const Navbar = () => {
             <a
               key={item.href}
               href={item.href}
+              onClick={(e) => scrollToSection(e, item.href)}
               className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors duration-300"
             >
               {item.label}
@@ -83,7 +103,7 @@ const Navbar = () => {
                 <a
                   key={item.href}
                   href={item.href}
-                  onClick={() => setMobileOpen(false)}
+                  onClick={(e) => scrollToSection(e, item.href)}
                   className="text-base font-medium text-muted-foreground hover:text-foreground transition-colors p-2 min-h-[44px] flex items-center"
                 >
                   {item.label}
