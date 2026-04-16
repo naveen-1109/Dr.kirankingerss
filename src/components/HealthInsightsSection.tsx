@@ -155,7 +155,7 @@ const HealthInsightsSection = memo(() => {
       {typeof document !== "undefined" && createPortal(
         <AnimatePresence>
           {selectedTip && (
-            <div className="fixed inset-0 z-[99999] pointer-events-none">
+            <div className="fixed inset-0 z-[99999] pointer-events-none flex items-center justify-center p-4">
               {/* Background Overlay */}
               <motion.div 
                 initial={{ opacity: 0 }}
@@ -163,16 +163,21 @@ const HealthInsightsSection = memo(() => {
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3 }}
                 onClick={() => setSelectedTip(null)}
-                className="fixed inset-0 bg-black/50 backdrop-blur-[5px] z-[99998] cursor-pointer pointer-events-auto"
+                className="fixed inset-0 bg-black/60 backdrop-blur-[6px] z-[99998] cursor-pointer pointer-events-auto"
               />
               
               {/* Modal Popup */}
               <motion.div 
-                initial={{ opacity: 0, scale: 0.9, x: "-50%", y: "-50%" }}
-                animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
-                exit={{ opacity: 0, scale: 0.9, x: "-50%", y: "-50%" }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="fixed top-1/2 left-1/2 z-[99999] w-[90%] max-w-[500px] bg-white dark:bg-slate-900 rounded-[2rem] shadow-2xl overflow-hidden flex flex-col max-h-[90vh] !m-0 pointer-events-auto"
+                initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                animate={{ opacity: 1, scale: 1, y: 0 }}
+                exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                transition={{ 
+                  duration: 0.4, 
+                  type: "spring",
+                  damping: 25,
+                  stiffness: 300
+                }}
+                className="relative z-[99999] w-full max-w-[500px] bg-white dark:bg-slate-900 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.3)] overflow-hidden flex flex-col max-h-[85vh] pointer-events-auto"
               >
                 <button 
                   onClick={() => setSelectedTip(null)}
