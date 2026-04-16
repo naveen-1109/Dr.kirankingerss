@@ -99,20 +99,15 @@ const ContactSection = () => {
           viewport={{ once: true }}
           className="glass-card overflow-hidden shadow-elevated relative group cursor-pointer"
           onClick={() => {
-            const iframe = document.getElementById('clinic-map');
-            if (iframe) iframe.style.pointerEvents = 'auto';
-          }}
-          onMouseLeave={() => {
-            const iframe = document.getElementById('clinic-map');
-            if (iframe) iframe.style.pointerEvents = 'none';
+            window.open("https://www.google.com/maps/dir/?api=1&destination=Dr+Kingers+clinic+Bangalore", "_blank");
           }}
         >
-          <div className="absolute inset-0 z-10 pointer-events-none bg-transparent group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center">
+          <div className="absolute inset-0 z-10 bg-transparent group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center">
             <div className="md:hidden glass-card px-4 py-2 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-              Tap to interact with map
+              Tap to open in Google Maps
             </div>
             <div className="hidden md:block glass-card px-4 py-2 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-              Click to interact with map
+              Click to open in Google Maps
             </div>
           </div>
           <iframe
