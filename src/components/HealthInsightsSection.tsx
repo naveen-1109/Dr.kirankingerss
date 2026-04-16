@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { memo, useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Eye, ShieldCheck, Heart, Sparkles } from "lucide-react";
 import { createPortal } from "react-dom";
@@ -41,7 +41,7 @@ const HEALTH_TIPS: HealthTip[] = [
   }
 ];
 
-export default function HealthInsightsSection() {
+const HealthInsightsSection = memo(() => {
   const [selectedTip, setSelectedTip] = useState<HealthTip | null>(null);
 
   // Prevent scroll when modal is open
@@ -226,4 +226,6 @@ export default function HealthInsightsSection() {
       `}</style>
     </section>
   );
-}
+});
+
+export default HealthInsightsSection;

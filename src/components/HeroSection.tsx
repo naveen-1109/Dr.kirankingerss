@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { motion } from "framer-motion";
 import { Calendar, Shield, Heart, Stethoscope } from "lucide-react";
 import WhatsAppIcon from "./ui/WhatsAppIcon";
@@ -7,7 +8,7 @@ import DNAHelix from "./DNAHelix";
 
 const teenagerUrl = "https://res.cloudinary.com/dtu6v3jya/image/upload/v1776174662/pexels-pavel-ariel-alexandrovsky-404400434-15427734_pgcnpw.jpg";
 
-const HeroSection = () => {
+const HeroSection = memo(() => {
   return (
     <section className="relative min-h-screen hero-gradient overflow-hidden flex items-start md:items-center">
       {/* Gradient blobs */}
@@ -243,4 +244,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default memo(HeroSection);

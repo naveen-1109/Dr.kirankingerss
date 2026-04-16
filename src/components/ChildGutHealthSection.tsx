@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Info, Droplets, Apple, CheckCircle2, ChevronDown, Activity } from "lucide-react";
 
@@ -60,7 +60,7 @@ const DIGESTION_GUIDES: DigestionGuide[] = [
   }
 ];
 
-export default function ChildGutHealthSection() {
+const ChildGutHealthSection = memo(() => {
   const [openSection, setOpenSection] = useState<SectionType | null>("loose");
 
   const toggleSection = (id: SectionType) => {
@@ -230,4 +230,6 @@ export default function ChildGutHealthSection() {
       </div>
     </section>
   );
-}
+});
+
+export default ChildGutHealthSection;

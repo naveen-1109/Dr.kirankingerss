@@ -72,7 +72,7 @@ function FloatingOrb({ position, color, size = 0.15 }: { position: [number, numb
   return (
     <Float speed={2} rotationIntensity={0.5} floatIntensity={2}>
       <mesh position={position}>
-        <sphereGeometry args={[size, 32, 32]} />
+        <sphereGeometry args={[size, 16, 16]} />
         <meshStandardMaterial color={color} emissive={color} emissiveIntensity={0.5} transparent opacity={0.6} />
       </mesh>
     </Float>
@@ -84,8 +84,9 @@ const DNAHelix = () => {
     <div className="w-full h-full">
       <Canvas 
         camera={{ position: [0, 0, 10], fov: 45 }} 
-        gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
-        dpr={[1, 2]} // Limit pixel ratio on high-dpi mobile
+        gl={{ alpha: true, antialias: false, powerPreference: "high-performance", stencil: false, depth: true }}
+        dpr={[1, 1.5]}
+        performance={{ min: 0.5 }}
       >
         <ambientLight intensity={0.5} />
         <directionalLight position={[5, 5, 5]} intensity={1} />

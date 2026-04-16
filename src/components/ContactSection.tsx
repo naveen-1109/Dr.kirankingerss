@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { memo } from "react";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import WhatsAppIcon from "./ui/WhatsAppIcon";
 
@@ -96,12 +97,29 @@ const ContactSection = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="glass-card overflow-hidden shadow-elevated"
+          className="glass-card overflow-hidden shadow-elevated relative group cursor-pointer"
+          onClick={() => {
+            const iframe = document.getElementById('clinic-map');
+            if (iframe) iframe.style.pointerEvents = 'auto';
+          }}
+          onMouseLeave={() => {
+            const iframe = document.getElementById('clinic-map');
+            if (iframe) iframe.style.pointerEvents = 'none';
+          }}
         >
+          <div className="absolute inset-0 z-10 pointer-events-none bg-transparent group-hover:bg-black/5 transition-colors duration-300 flex items-center justify-center">
+            <div className="md:hidden glass-card px-4 py-2 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+              Tap to interact with map
+            </div>
+            <div className="hidden md:block glass-card px-4 py-2 text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+              Click to interact with map
+            </div>
+          </div>
           <iframe
-            src="https://maps.google.com/maps?q=Dr%20Kiran%20Kingers%20clinic&t=&z=15&ie=UTF8&iwloc=&output=embed"
-            className="w-full h-[300px] md:h-[400px]"
-            style={{ border: 0 }}
+            id="clinic-map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.653495818968!2d77.6083!3d12.9967!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae16629c13b631%3A0xe7268579f1ed7d8!2sDr%20Kingers%20clinic!5e0!3m2!1sen!2sin!4v1713200000000!5m2!1sen!2sin"
+            className="w-full h-[300px] md:h-[400px] transition-all duration-300"
+            style={{ border: 0, pointerEvents: 'none' }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
@@ -114,4 +132,4 @@ const ContactSection = () => {
   );
 };
 
-export default ContactSection;
+export default memo(ContactSection);
